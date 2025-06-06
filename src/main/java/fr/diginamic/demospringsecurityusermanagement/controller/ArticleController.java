@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-
-@RestController
+@Controller
 @RequestMapping("/api/article")
 public class ArticleController
 {
@@ -31,15 +31,7 @@ public class ArticleController
         
         article.setAuteur(user);
         repository.save(article);
-        
-        return "article créé";
-    }
-    
-    @GetMapping("/all")
-    public String findAll(Model model)
-    {
-        List<Article> articles = repository.findAll();
-        model.addAttribute("articles", articles);
-        return "list";
+        System.out.println("Article POST received: " + article.getTitre());
+        return "redirect:/view/add-article";
     }
 }

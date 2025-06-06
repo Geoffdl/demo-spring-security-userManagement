@@ -18,7 +18,7 @@ public class SecurityConfig
         http
               .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
               .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/h2-console/**", "/api/article/all", "api/user-app/register").permitAll()
+                    .requestMatchers("/h2-console/**", "/api/article/all", "/api/user-app/register").permitAll()
                     .requestMatchers("/view/login", "/view/register", "/view/all").permitAll()
                     .anyRequest().authenticated())
               .formLogin(form -> form
