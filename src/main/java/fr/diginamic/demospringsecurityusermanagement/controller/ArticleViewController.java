@@ -11,25 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping({"/view"})
-public class PageController
+@RequestMapping("/view/article")
+public class ArticleViewController
 {
+    
     @Autowired
-    ArticleRepository articleRepository;
+    ArticleRepository repository;
     
-    @GetMapping("/login")
-    public String login()
-    {
-        return "login";
-    }
-    
-    @GetMapping("/register")
-    public String createUserPage()
-    {
-        return "register";
-    }
-    
-    @GetMapping("/add-article")
+    @GetMapping("/add")
     public String addArticle()
     {
         return "add-article";
@@ -38,7 +27,7 @@ public class PageController
     @GetMapping("/all")
     public String findAll(Model model)
     {
-        List<Article> articlesList = articleRepository.findAll();
+        List<Article> articlesList = repository.findAll();
         model.addAttribute("articles", articlesList);
         return "list-articles";
     }

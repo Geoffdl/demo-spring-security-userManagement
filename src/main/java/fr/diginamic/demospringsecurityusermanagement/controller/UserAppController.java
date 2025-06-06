@@ -9,20 +9,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/api/user-app")
+@RequestMapping("/auth")
 public class UserAppController
 {
     @Autowired
-    CustomUserDetailService customUserDetailService;
+    CustomUserDetailService service;
     
     @PostMapping("/register")
     public String registerUser(@ModelAttribute UserApp userApp)
     {
-        System.out.println("Register POST received: " + userApp.getEmail());
-        customUserDetailService.createUser(
-              userApp.getEmail(),
-              userApp.getPassword());
-        
+        service.registerUser(userApp.getEmail(), userApp.getPassword());
         return "redirect:/view/login";
     }
 }

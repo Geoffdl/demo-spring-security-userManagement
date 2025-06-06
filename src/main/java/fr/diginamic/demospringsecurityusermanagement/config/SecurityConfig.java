@@ -18,18 +18,19 @@ public class SecurityConfig
         http
               .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
               .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/h2-console/**", "/api/article/all", "/api/user-app/register").permitAll()
-                    .requestMatchers("/view/login", "/view/register", "/view/all").permitAll()
+                    .requestMatchers("/h2-console/**", "auth/register", "/view/auth/register", "/view/auth/login")
+                    .permitAll()
+                    .requestMatchers("/article/new", "/view/article/all").permitAll()
                     .anyRequest().authenticated())
               .formLogin(form -> form
-                    .loginPage("/view/login")
-                    .defaultSuccessUrl("/view/add-article", true)
-                    .failureUrl("/view/login")
+                    .loginPage("/view/auth/login")
+                    .defaultSuccessUrl("/view/article/add", true)
+                    .failureUrl("/view/auth/login")
                     .permitAll())
               
               .logout(logout -> logout
                     .logoutUrl("/logout")
-                    .logoutSuccessUrl("/view/login")
+                    .logoutSuccessUrl("/view/auth/login")
                     .permitAll())
               .csrf(AbstractHttpConfigurer::disable);
         
