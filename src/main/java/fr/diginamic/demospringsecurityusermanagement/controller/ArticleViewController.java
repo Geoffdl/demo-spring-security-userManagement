@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+/**
+ * Vue articles controller
+ */
 @Controller
 @RequestMapping("/view/article")
 public class ArticleViewController
@@ -18,12 +21,21 @@ public class ArticleViewController
     @Autowired
     ArticleRepository repository;
     
+    /**
+     * Affiche la page d'ajout d'un article
+     * @return affiche add-article.html
+     */
     @GetMapping("/add")
     public String addArticle()
     {
         return "add-article";
     }
     
+    /**
+     * Affiche tous les articles
+     * @param model mvc view article
+     * @return affiche list-articles.html
+     */
     @GetMapping("/all")
     public String findAll(Model model)
     {

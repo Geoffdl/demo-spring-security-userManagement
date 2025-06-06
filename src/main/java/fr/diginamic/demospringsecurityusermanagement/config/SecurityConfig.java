@@ -9,9 +9,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+/**
+ * Configuration Spring security
+ */
 @Configuration
 public class SecurityConfig
 {
+    /**
+     * Configuration de Spring sécurity
+     * @param http protocole http
+     * @return parametrage http
+     * @throws Exception erreur
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
@@ -37,6 +46,10 @@ public class SecurityConfig
         return http.build();
     }
     
+    /**
+     * Encodeur de mots de passes
+     * @return implémentation de PasswordEncoder
+     */
     @Bean
     public static PasswordEncoder passwordEncoder()
     {

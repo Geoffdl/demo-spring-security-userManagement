@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Entité JPA article
+ */
 @Entity
 @Data
 @NoArgsConstructor
