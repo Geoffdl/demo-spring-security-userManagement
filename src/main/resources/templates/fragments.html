@@ -10,17 +10,15 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">SpringApp</a>
-            <button aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"
-                    class="navbar-toggler"
-                    data-bs-target="#navbarNavAltMarkup" data-bs-toggle="collapse" type="button">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a aria-current="page" class="nav-link" th:href="@{/view/login}">Login</a>
                     <a class="nav-link" th:href="@{/view/register}">Register</a>
                     <a class="nav-link" th:href="@{/view/all}">View Articles</a>
                     <a class="nav-link" th:href="@{/view/add-article}">Add articles</a>
+                    <a class="nav-link " th:href="@{/logout}">Logout</a>
+
                 </div>
             </div>
         </div>
@@ -30,7 +28,7 @@
 <div th:fragment="footer2">
     <nav class="navbar fixed-bottom bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">&copy; 2024 My App</a>
+            <a class="navbar-brand" href="#">&copy; 2077 My App</a>
         </div>
     </nav>
 </div>
