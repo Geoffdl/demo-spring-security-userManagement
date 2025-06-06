@@ -8,12 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/article")
+@RequestMapping("/api/article")
 public class ArticleController
 {
     @Autowired
@@ -35,15 +36,10 @@ public class ArticleController
     }
     
     @GetMapping("/all")
-    public String findAll()
+    public String findAll(Model model)
     {
         List<Article> articles = repository.findAll();
-        StringBuilder sb = new StringBuilder();
-        
-        for (Article a : articles)
-        {
-            sb.append("Article : ").append(a.getTitre()).append("\n\t").append(a.getAuteur().getEmail()).append("\n");
-        }
-        return sb.toString();
+        model.addAttribute("articles", articles);
+        return "list";
     }
 }

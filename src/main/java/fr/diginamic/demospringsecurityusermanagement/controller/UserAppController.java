@@ -9,17 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/user-app")
-public class UserAppController {
+@RequestMapping("/api/user-app")
+public class UserAppController
+{
     @Autowired
     CustomUserDetailService customUserDetailService;
-
+    
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute UserApp userApp) {
+    public String registerUser(@ModelAttribute UserApp userApp)
+    {
         customUserDetailService.createUser(
-                userApp.getEmail(),
-                userApp.getPassword());
-
+              userApp.getEmail(),
+              userApp.getPassword());
+        
         return "Utilisateur crée";
     }
 }
