@@ -4,29 +4,27 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "user_app")
-public class UserApp
+@Table(name = "article")
+public class Article
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(unique = true)
-    private String email;
-    private String password;
+    private String titre;
+    private String contenu;
     
-    @OneToMany(mappedBy = "auteur")
+    @ManyToOne
+    @JoinColumn(name = "id_auteur", referencedColumnName = "id")
+    private UserApp auteur;
     
-    private Set<Article> articles;
-    
-    public UserApp(String email, String password)
+    public Article(String titre, String contenu)
     {
-        this.email = email;
-        this.password = password;
+        this.titre = titre;
+        this.contenu = contenu;
     }
 }
