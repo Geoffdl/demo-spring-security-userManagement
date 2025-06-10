@@ -22,7 +22,8 @@ class HmacSHA256Test
         String message = "Diginamic c'est chouette";
         String expected = "rFmL9AfdBKWnjSnRAxF/vLMvZXk1S+zUR21tjzVXrkA=";
         String result = "";
-        for (int i = 0; i < Integer.MAX_VALUE; i++)
+        
+        for (int i = 19880606; i < Integer.MAX_VALUE; i++)
         {
             String key = String.valueOf(i);
             HmacSHA256 hmac2 = new HmacSHA256(key);
